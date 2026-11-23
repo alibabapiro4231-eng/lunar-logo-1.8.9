@@ -22,10 +22,9 @@ import java.awt.image.BufferedImage;
 @Mod(modid = LunarLogoMod.MODID, version = LunarLogoMod.VERSION, clientSideOnly = true)
 public class LunarLogoMod {
     public static final String MODID = "lunarlogo";
-    public static final String VERSION = "1.2";
+    public static final String VERSION = "1.4";
     private static ResourceLocation lunarIconLocation;
 
-    // Attigin gorseldeki dis cerceve, hilal, yildizlar ve alt cizgileriyle tam Lunar Logosu (32x32)
     private static final String[] LUNAR_PIXEL_ART = {
         "..............XXXX..............",
         "............XXXXXXXX............",
@@ -79,7 +78,7 @@ public class LunarLogoMod {
                 }
             }
             DynamicTexture dynTex = new DynamicTexture(img);
-            lunarIconLocation = Minecraft.getMinecraft().getTextureManager().getDynamicTextureLocation("lunar_client_full_logo", dynTex);
+            lunarIconLocation = Minecraft.getMinecraft().getTextureManager().getDynamicTextureLocation("lunar_client_sharp", dynTex);
         }
         return lunarIconLocation;
     }
@@ -119,11 +118,13 @@ public class LunarLogoMod {
         mc.getTextureManager().bindTexture(getLunarTexture());
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 
-        int iconSize = 10;
-        int iconX = -(textWidth / 2) - iconSize - 3;
-        int iconY = -1;
+        // Basikligi gidermek icin 12 genislik x 13 yukseklik orani
+        int iconW = 12;
+        int iconH = 13;
+        int iconX = -(textWidth / 2) - iconW - 3;
+        int iconY = -3;
 
-        drawTexturedRect(iconX, iconY, iconSize, iconSize);
+        drawTexturedRect(iconX, iconY, iconW, iconH);
 
         GlStateManager.enableDepth();
         GlStateManager.depthMask(true);
@@ -143,3 +144,4 @@ public class LunarLogoMod {
         tessellator.draw();
     }
 }
+
