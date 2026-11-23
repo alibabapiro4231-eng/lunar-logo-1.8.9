@@ -1,0 +1,10 @@
+[
+  {
+    "modid": "lunarlogo",
+    "name": "Lunar Logo Mod",
+    "description": "Isim etiketlerinin yanina Lunar Client logosu ekler.",
+    "version": "1.0",
+    "mcversion": "1.8.9",
+    "authorList": ["Custom"]
+  }
+]
