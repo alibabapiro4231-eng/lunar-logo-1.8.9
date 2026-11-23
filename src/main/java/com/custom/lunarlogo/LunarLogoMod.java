@@ -22,26 +22,43 @@ import java.awt.image.BufferedImage;
 @Mod(modid = LunarLogoMod.MODID, version = LunarLogoMod.VERSION, clientSideOnly = true)
 public class LunarLogoMod {
     public static final String MODID = "lunarlogo";
-    public static final String VERSION = "1.0";
+    public static final String VERSION = "1.2";
     private static ResourceLocation lunarIconLocation;
 
+    // Attigin gorseldeki dis cerceve, hilal, yildizlar ve alt cizgileriyle tam Lunar Logosu (32x32)
     private static final String[] LUNAR_PIXEL_ART = {
-        "......XXXX......",
-        "....XXXXXXXX....",
-        "...XXXX..XXXX...",
-        "..XXXX........X.",
-        ".XXXX........XXX",
-        ".XXXX.........X.",
-        "XXXX............",
-        "XXXX........X...",
-        "XXXX.......XXX..",
-        "XXXX........X...",
-        ".XXXX...........",
-        ".XXXX.........X.",
-        "..XXXX.......XXX",
-        "...XXXX..XXXX.X.",
-        "....XXXXXXXX....",
-        "......XXXX......"
+        "..............XXXX..............",
+        "............XXXXXXXX............",
+        "..........XXXX....XXXX..........",
+        "........XXXX........XXXX........",
+        "......XXXX............XXXX......",
+        "....XXXX.......XX.......XXXX....",
+        "...XXX........XXXX........XXX...",
+        "..XXX..........XX..........XXX..",
+        "..XX......XX........XX......XX..",
+        "..XX.....XXXX......XXXX.....XX..",
+        "..XX....XXXXX.......XX......XX..",
+        "..XX...XXXXXX...XX..........XX..",
+        "..XX...XXXXXX..XXXX.........XX..",
+        "..XX...XXXXXXX..XX.....XX...XX..",
+        "..XX...XXXXXXXX.......XXXX..XX..",
+        "..XX....XXXXXXXX..XX...XX...XX..",
+        "..XX....XXXXXXXX.XXXX.......XX..",
+        "..XX.....XXXXXXXX.XX........XX..",
+        "..XX......XXXXXXXXXX........XX..",
+        "..XX.......XXXXXXXXXXXX.....XX..",
+        "..XX.........XXXXXXXXXXXX...XX..",
+        "..XX...........XXXXXXXXXX...XX..",
+        "..XX..............XXXXXX....XX..",
+        "................................",
+        ".XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.",
+        ".XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.",
+        "..XXXXXXXXXXXXXXXXXXXXXXXXXXXX..",
+        "....XXXXXXXXXXXXXXXXXXXXXXXX....",
+        "......XXXXXXXXXXXXXXXXXXXX......",
+        ".........XXXXXXXXXXXXXX.........",
+        "...........XXXXXXXXXX...........",
+        "................................"
     };
 
     @Mod.EventHandler
@@ -51,9 +68,9 @@ public class LunarLogoMod {
 
     private ResourceLocation getLunarTexture() {
         if (lunarIconLocation == null) {
-            BufferedImage img = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
-            for (int y = 0; y < 16; y++) {
-                for (int x = 0; x < 16; x++) {
+            BufferedImage img = new BufferedImage(32, 32, BufferedImage.TYPE_INT_ARGB);
+            for (int y = 0; y < 32; y++) {
+                for (int x = 0; x < 32; x++) {
                     if (LUNAR_PIXEL_ART[y].charAt(x) == 'X') {
                         img.setRGB(x, y, 0xFFFFFFFF);
                     } else {
@@ -62,7 +79,7 @@ public class LunarLogoMod {
                 }
             }
             DynamicTexture dynTex = new DynamicTexture(img);
-            lunarIconLocation = Minecraft.getMinecraft().getTextureManager().getDynamicTextureLocation("lunar_client_logo", dynTex);
+            lunarIconLocation = Minecraft.getMinecraft().getTextureManager().getDynamicTextureLocation("lunar_client_full_logo", dynTex);
         }
         return lunarIconLocation;
     }
